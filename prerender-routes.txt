@@ -1,0 +1,16 @@
+/pl
+/pl/o-mnie
+/pl/portfolio
+/pl/kontakt
+/pl/portfolio/todo-list-app
+/pl/portfolio/choreographer-website
+/pl/portfolio/car-store
+/pl/portfolio/job-portal
+/en
+/en/about
+/en/portfolio
+/en/contact
+/en/portfolio/todo-list-app
+/en/portfolio/choreographer-website
+/en/portfolio/car-store
+/en/portfolio/job-portal

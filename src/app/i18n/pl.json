@@ -1,0 +1,27 @@
+{
+  "skipLink": "Przejdź do treści",
+  "header": {
+    "home": "Julen Zulaika — strona główna",
+    "menuOpen": "Otwórz menu",
+    "menuClose": "Zamknij menu"
+  },
+  "menu": {
+    "close": "Zamknij menu",
+    "languageLabel": "Język"
+  },
+  "language": {
+    "label": "Język",
+    "polski": "Polski",
+    "english": "English",
+    "current": "Aktualny język",
+    "switchTo": "Przełącz na English"
+  },
+  "footer": {
+    "navLabel": "Nawigacja w stopce",
+    "socialLabel": "Profile społecznościowe",
+    "languageNote": "Dostępne również w English.",
+    "privacyNote": "Bez trackerów i ciasteczek — Twoja wizyta zostaje Twoja.",
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "backToTop": "Wróć na górę"
+  }
+}

@@ -1,0 +1,103 @@
+import { UiCopy } from '../models/ui-copy';
+
+/** Page-chrome copy (English). Moved verbatim from the feature pages so
+ *  components consume typed data instead of containing copy (plan §9). */
+export const uiCopyEn: UiCopy = {
+  home: {
+    eyebrow: 'Full Stack Developer · Kraków',
+    heroLead:
+      'I build modern web applications with Angular, from polished interfaces to solid backends.',
+    viewWork: 'View my work',
+    getInTouch: 'Get in touch',
+    aboutEyebrow: 'About',
+    aboutTitle: 'Developer with a passion for tech',
+    aboutLead:
+      'Spain-born, Kraków-based. Two official diplomas in application development, now building for the web full-time.',
+    aboutMore: 'More about me',
+    skillsEyebrow: 'Skills',
+    skillsTitle: 'What I work with',
+    viewAll: 'View all projects',
+    featuredEyebrow: 'Selected work',
+    featuredTitle: 'Featured projects',
+    contactTitle: "Let's get in touch",
+    contactBody: 'The fastest way to reach me is email — I usually reply within a day.',
+    categoryNames: {
+      frontend: 'Frontend',
+      framework: 'Frameworks',
+      backend: 'Backend',
+      styling: 'Styling',
+      tooling: 'Tools',
+      database: 'Databases',
+    },
+  },
+  about: {
+    eyebrow: 'About',
+    title: 'I have always loved tech',
+    para1:
+      'I was born in Spain, where I earned two official diplomas — in web application development and in multiplatform application development. While studying, I worked part-time as a web developer, and an internship later brought me to Kraków.',
+    para2:
+      'I am now established in Poland and work as a full-stack developer, focused on modern web technologies and steady growth. I care about clean interfaces, maintainable code and products that are genuinely useful.',
+    educationEyebrow: 'Education',
+    educationTitle: 'Two diplomas, one direction',
+    diploma1Title: 'Web Application Development',
+    diploma1Meta: 'Official diploma · Spain',
+    diploma1Body:
+      'Design, development and maintenance of web applications — frontend, backend and databases.',
+    diploma2Title: 'Multiplatform Application Development',
+    diploma2Meta: 'Official diploma · Spain',
+    diploma2Body:
+      'Development of desktop, mobile and multiplatform applications, from design to deployment.',
+    krakowEyebrow: 'Kraków',
+    krakowTitle: 'Based in Kraków',
+    krakowBody:
+      'After an internship I relocated to Kraków, Poland — and stayed. I work here on site and collaborate remotely across Europe.',
+    cvLabel: 'Download my CV',
+    ctaTitle: 'Want to work together?',
+    ctaBody: 'The fastest way to reach me is email.',
+    ctaSecondary: 'Contact details',
+  },
+  portfolio: {
+    eyebrow: 'Portfolio',
+    title: 'All projects',
+    lead: 'Filter by technology. Click a project to see details.',
+    all: 'All',
+    emptyTitle: 'No projects with this technology yet.',
+    reset: 'Show all projects',
+    results: (n: number) => (n === 1 ? '1 project' : `${n} projects`),
+  },
+  project: {
+    back: '← Back to portfolio',
+    techTitle: 'Tech stack',
+    galleryTitle: 'Gallery',
+    galleryHint: 'Use left and right arrows to browse.',
+    prevImage: 'Previous image',
+    nextImage: 'Next image',
+    prevProject: '← Previous project',
+    nextProject: 'Next project →',
+    contactTitle: 'Interested in this project?',
+    contactBody: 'Write to me and I will tell you more.',
+    contactCta: 'Get in touch',
+    notFoundEyebrow: '404',
+    notFoundTitle: 'Project not found',
+    notFoundBody: 'This project does not exist or has been moved.',
+  },
+  contact: {
+    eyebrow: 'Contact',
+    title: "Let's get in touch",
+    lead: 'The fastest way to reach me is email — I usually reply within a day.',
+    writeToMe: 'Write to me',
+    copyEmail: 'Copy email address',
+    copied: 'Email address copied to clipboard.',
+    availabilityLabel: 'Availability',
+    cvLabel: 'Download my CV',
+    connectTitle: 'Elsewhere',
+    mailSubject: 'Hello Julen — inquiry from your website',
+  },
+  notFound: {
+    eyebrow: '404',
+    title: 'Page not found',
+    body: 'This page does not exist or has been moved.',
+    home: 'Back to home',
+    portfolio: 'Browse portfolio',
+  },
+};

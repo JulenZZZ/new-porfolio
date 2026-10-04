@@ -1,0 +1,113 @@
+/* Design tokens — single source of truth (IMPLEMENTATION_PLAN §6–7).
+   No hardcoded color / spacing / type / radius / shadow / motion values
+   in components: every value below is consumed via var(--*). */
+
+:root {
+  /* 6.2 Colors (light-first, teal-anchored) */
+  --bg: #fafaf7; /* warm paper page background */
+  --surface: #ffffff; /* cards, menu overlay */
+  --ink: #161a1d; /* primary text */
+  --muted: #5c6570; /* secondary text (≥4.5:1 on paper) */
+  --line: rgb(22 26 29 / 10%); /* hairlines, borders */
+  --teal: #1d809f; /* brand accent: links, active states */
+  --teal-deep: #14667e; /* hover, body-size links (AA on light) */
+  --ember: #e16541; /* sparing: CTA fill, active markers */
+  --gold: #ecb807; /* sparing: highlights, availability dot */
+  --dark-bg: #101415; /* footer + contact finale contrast */
+  --dark-ink: #f2f4f3;
+  --dark-muted: #aab3b1;
+  --dark-line: rgb(242 244 243 / 14%);
+
+  /* Warm gradient — reserved for TWO moments only: hero name + contact finale. */
+  --gradient-warm: linear-gradient(100deg, var(--teal) 0%, var(--ember) 55%, var(--gold) 110%);
+
+  /* 4px spacing scale (multiples of 4px) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* 6.1 Type scale (fluid clamp) */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, sfmono-regular, menlo, monospace;
+
+  --text-hero: clamp(2.5rem, 6vw, 4.75rem);
+  --text-h1: clamp(2rem, 4.5vw, 3.25rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: 1.375rem;
+  --text-body: 1rem;
+  --text-lead: 1.125rem;
+  --text-eyebrow: 0.75rem;
+
+  --leading-hero: 1.05;
+  --leading-heading: 1.15;
+  --leading-body: 1.65;
+  --leading-lead: 1.7;
+  --tracking-tight: -0.03em;
+  --tracking-eyebrow: 0.14em;
+
+  /* Layout (§6.3) */
+  --container: min(1120px, 100% - 3rem);
+  --container-narrow: 720px;
+  --section-rhythm: clamp(4.5rem, 9vw, 8.5rem);
+  --break-sm: 640px;
+  --break-lg: 1024px;
+  --break-xl: 1440px;
+
+  /* Radii */
+  --radius-card: 10px;
+  --radius-pill: 999px;
+
+  /* Shadows (one soft shadow, used sparingly) */
+  --shadow-soft: 0 20px 50px rgb(22 26 29 / 8%);
+
+  /* Motion tokens (§7, §15) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-slow: 450ms;
+
+  /* Reveal stagger budget (set per element via --reveal-delay) */
+  --reveal-delay: 0ms;
+
+  /* Focus ring */
+  --focus-ring: 2px solid var(--teal-deep);
+  --focus-offset: 3px;
+
+  /* Header */
+  --header-height: 68px;
+  --z-header: 50;
+  --z-menu: 100;
+}
+
+/* SCSS-only helpers — mixins, never values. */
+@mixin container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+@mixin eyebrow-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: 1.5;
+}
+
+@mixin focus-visible-ring {
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+    border-radius: 2px;
+  }
+}

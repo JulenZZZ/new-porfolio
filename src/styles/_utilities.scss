@@ -1,0 +1,127 @@
+/* Shared utility classes. No component library: buttons are two classes
+   (.btn-primary / .btn-ghost) per plan §6.4. Every hover has a
+   :focus-visible mirror and a tap (:active) equivalent. */
+@use 'tokens' as *;
+
+.container {
+  @include container;
+}
+
+.container-narrow {
+  width: min(var(--container-narrow, 720px), 100% - 3rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  @include eyebrow-text;
+  color: var(--teal-deep);
+  display: block;
+}
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+  }
+}
+
+.btn-primary {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: #fff;
+
+  &:hover {
+    background: var(--teal-deep);
+    border-color: var(--teal-deep);
+    color: #fff;
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+
+  &:hover {
+    border-color: var(--teal);
+    color: var(--teal-deep);
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Scroll-reveal base states (toggled by RevealDirective, the only
+   animation primitive). Reduced motion: visible instantly. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Warm gradient text — RESTRICTED to hero name + contact finale (§6.2).
+   Do not reuse elsewhere; everywhere else uses flat color. */
+.gradient-text {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Dark section (footer + contact finale contrast, §6.2) */
+.dark-section {
+  background: var(--dark-bg);
+  color: var(--dark-ink);
+
+  a {
+    color: var(--dark-ink);
+  }
+}
