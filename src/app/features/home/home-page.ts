@@ -18,6 +18,7 @@ import { PlaceholderArt } from '../../shared/placeholder-art';
 import { ProjectGrid } from '../../shared/project-grid';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionHeader } from '../../shared/section-header';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -32,15 +33,15 @@ const siteUrl = environment.siteUrl;
     <main class="home">
       <section class="hero" aria-labelledby="hero-name">
         <div class="hero-copy" appReveal>
-          <p class="eyebrow">{{ t().eyebrow }}</p>
+          <p class="eyebrow">{{ t('home.eyebrow') }}</p>
           <h1 id="hero-name">
             Hi, I'm <span class="name-gradient">{{ profile().name }}</span>
           </h1>
           <p class="role">{{ role() }}</p>
-          <p class="lead">{{ t().heroLead }}</p>
+          <p class="lead">{{ t('home.heroLead') }}</p>
           <p class="hero-ctas">
-            <a class="btn-primary" [href]="portfolioUrl()">{{ t().viewWork }}</a>
-            <a class="btn-ghost" [href]="contactUrl()">{{ t().getInTouch }}</a>
+            <a class="btn-primary" [href]="portfolioUrl()">{{ t('home.viewWork') }}</a>
+            <a class="btn-ghost" [href]="contactUrl()">{{ t('home.getInTouch') }}</a>
           </p>
         </div>
         <div class="hero-portrait" appReveal>
@@ -50,20 +51,20 @@ const siteUrl = environment.siteUrl;
 
       <section class="about-teaser" aria-labelledby="about-teaser-title">
         <app-section-header
-          [eyebrow]="t().aboutEyebrow"
-          [title]="t().aboutTitle"
-          [lead]="t().aboutLead"
+          [eyebrow]="t('home.aboutEyebrow')"
+          [title]="t('home.aboutTitle')"
+          [lead]="t('home.aboutLead')"
         />
-        <a class="text-link" [href]="aboutUrl()">{{ t().aboutMore }} →</a>
+        <a class="text-link" [href]="aboutUrl()">{{ t('home.aboutMore') }} →</a>
       </section>
 
       <section class="skills" id="skills" aria-labelledby="skills-title">
-        <app-section-header [eyebrow]="t().skillsEyebrow" [title]="t().skillsTitle" />
-        <h2 id="skills-title" class="visually-hidden">{{ t().skillsTitle }}</h2>
+        <app-section-header [eyebrow]="t('home.skillsEyebrow')" [title]="t('home.skillsTitle')" />
+        <h2 id="skills-title" class="visually-hidden">{{ t('home.skillsTitle') }}</h2>
         <div class="skill-groups">
           @for (group of skillsGrouped(); track group.category) {
             <div class="skill-group" appReveal>
-              <h3>{{ t().categoryNames[group.category] }}</h3>
+              <h3>{{ t('home.categoryNames.' + group.category) }}</h3>
               <ul>
                 @for (skill of group.items; track skill.id) {
                   <li class="skill-badge">{{ skill.name }}</li>
@@ -75,8 +76,8 @@ const siteUrl = environment.siteUrl;
       </section>
 
       <section class="featured" aria-labelledby="featured-title">
-        <app-section-header [eyebrow]="t().featuredEyebrow" [title]="t().featuredTitle" />
-        <h2 id="featured-title" class="visually-hidden">{{ t().featuredTitle }}</h2>
+        <app-section-header [eyebrow]="t('home.featuredEyebrow')" [title]="t('home.featuredTitle')" />
+        <h2 id="featured-title" class="visually-hidden">{{ t('home.featuredTitle') }}</h2>
         <app-project-grid
           [projects]="featured()"
           [lang]="effLang()"
@@ -84,21 +85,21 @@ const siteUrl = environment.siteUrl;
           [cols3]="true"
         />
         <p class="view-all">
-          <a class="btn-ghost" [href]="portfolioUrl()">{{ t().viewAll }}</a>
+          <a class="btn-ghost" [href]="portfolioUrl()">{{ t('home.viewAll') }}</a>
         </p>
       </section>
 
       <app-cta-block
-        [title]="t().contactTitle"
-        [text]="t().contactBody"
+        [title]="t('home.contactTitle')"
+        [text]="t('home.contactBody')"
         [primary]="{ label: profile().email, href: mailtoHref() }"
-        [secondary]="{ label: t().getInTouch, href: contactUrl() }"
+        [secondary]="{ label: t('home.getInTouch'), href: contactUrl() }"
       />
     </main>
 
     <nav class="sticky-cta" aria-label="Quick contact">
       <a class="sticky-mail" [href]="mailtoHref()">✉ {{ profile().email }}</a>
-      <a class="sticky-portfolio" [href]="portfolioUrl()">{{ t().viewWork }}</a>
+      <a class="sticky-portfolio" [href]="portfolioUrl()">{{ t('home.viewWork') }}</a>
     </nav>
   `,
   styles: [
@@ -283,11 +284,13 @@ export class HomePage implements OnInit {
   private readonly languages = inject(LanguageService);
   private readonly seo = inject(SeoService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly translations = inject(TranslateService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present — the assertion documents the
    *  `AsyncData` contract the future `ApiProvider` will fill asynchronously. */
-  protected readonly t = computed(() => this.store.uiCopy().data!.home);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+      this.translations.instant(key, params); 
   protected readonly profile = computed(() => this.store.profile().data!);
   protected readonly featured = computed(() => this.store.featured().data ?? []);
   protected readonly skillsGrouped = computed(() => this.store.skillsGrouped().data ?? []);

@@ -13,6 +13,7 @@ import { pageUrl } from '../../i18n/routes.i18n';
 import { environment } from '../../../environments/environment';
 import { ProjectGrid } from '../../shared/project-grid';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -26,9 +27,9 @@ const siteUrl = environment.siteUrl;
   template: `
     <main class="portfolio">
       <header class="page-head" appReveal>
-        <p class="eyebrow">{{ t().eyebrow }}</p>
-        <h1>{{ t().title }}</h1>
-        <p class="lead">{{ t().lead }}</p>
+        <p class="eyebrow">{{ t('portfolio.eyebrow') }}</p>
+        <h1>{{ t('portfolio.title') }}</h1>
+        <p class="lead">{{ t('portfolio.lead') }}</p>
       </header>
 
       <div class="chips" role="group" aria-label="Filter by technology" appReveal>
@@ -39,7 +40,7 @@ const siteUrl = environment.siteUrl;
           [attr.aria-pressed]="selected() === 'all'"
           (click)="select('all')"
         >
-          {{ t().all }}
+          {{ t('portfolio.all') }}
         </button>
         @for (tech of techOptions(); track tech) {
           <button
@@ -54,7 +55,9 @@ const siteUrl = environment.siteUrl;
         }
       </div>
 
-      <p class="results" aria-live="polite">{{ t().results(filtered().length) }}</p>
+      <p class="results" aria-live="polite">
+        {{ filtered().length === 1 ? t('portfolio.results_one') : t('portfolio.results_other', { count: filtered().length }) }}
+      </p>
 
       @if (filtered().length > 0) {
         <app-project-grid
@@ -64,8 +67,8 @@ const siteUrl = environment.siteUrl;
         />
       } @else {
         <div class="empty" appReveal>
-          <p>{{ t().emptyTitle }}</p>
-          <button type="button" class="btn-ghost" (click)="select('all')">{{ t().reset }}</button>
+          <p>{{ t('portfolio.emptyTitle') }}</p>
+          <button type="button" class="btn-ghost" (click)="select('all')">{{ t('portfolio.reset') }}</button>
         </div>
       }
     </main>
@@ -153,11 +156,13 @@ const siteUrl = environment.siteUrl;
 export class PortfolioPage implements OnInit {
   private readonly store = inject(PortfolioService);
   private readonly languages = inject(LanguageService);
+  private readonly translations = inject(TranslateService);
   private readonly seo = inject(SeoService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present (see HomePage note on `AsyncData`). */
-  protected readonly t = computed(() => this.store.uiCopy().data!.portfolio);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+    this.translations.instant(key, params);
   protected readonly techOptions = computed(() => this.store.allTech().data ?? []);
   protected readonly portfolioUrl = computed(() => pageUrl(this.effLang(), 'portfolio'));
 

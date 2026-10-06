@@ -5,6 +5,7 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { pageUrl } from '../../i18n/routes.i18n';
 import { environment } from '../../../environments/environment';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -16,12 +17,12 @@ const siteUrl = environment.siteUrl;
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <main class="not-found" appReveal>
-      <p class="eyebrow">{{ t().eyebrow }}</p>
-      <h1>{{ t().title }}</h1>
-      <p>{{ t().body }}</p>
+      <p class="eyebrow">{{ t('notFound.eyebrow') }}</p>
+      <h1>{{ t('notFound.title') }}</h1>
+      <p>{{ t('notFound.body') }}</p>
       <p class="actions">
-        <a class="btn-primary" [href]="homeUrl()">{{ t().home }}</a>
-        <a class="btn-ghost" [href]="portfolioUrl()">{{ t().portfolio }}</a>
+        <a class="btn-primary" [href]="homeUrl()">{{ t('notFound.home') }}</a>
+        <a class="btn-ghost" [href]="portfolioUrl()">{{ t('notFound.portfolio') }}</a>
       </p>
     </main>
   `,
@@ -83,10 +84,13 @@ export class NotFoundView implements OnInit {
   private readonly store = inject(PortfolioService);
   private readonly languages = inject(LanguageService);
   private readonly seo = inject(SeoService);
+  private readonly translations = inject(TranslateService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present (see HomePage note on `AsyncData`). */
-  protected readonly t = computed(() => this.store.uiCopy().data!.notFound);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+    this.translations.instant(key, params);
+
   protected readonly homeUrl = computed(() => pageUrl(this.effLang(), 'home'));
   protected readonly portfolioUrl = computed(() => pageUrl(this.effLang(), 'portfolio'));
 

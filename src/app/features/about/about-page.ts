@@ -9,6 +9,7 @@ import { CtaBlock } from '../../shared/cta-block';
 import { PlaceholderArt } from '../../shared/placeholder-art';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionHeader } from '../../shared/section-header';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -21,16 +22,16 @@ const siteUrl = environment.siteUrl;
   template: `
     <main class="about">
       <header class="page-head" appReveal>
-        <p class="eyebrow">{{ t().eyebrow }}</p>
-        <h1>{{ t().title }}</h1>
+        <p class="eyebrow">{{ t('about.eyebrow') }}</p>
+        <h1>{{ t('about.title') }}</h1>
       </header>
 
       <div class="bio-grid">
         <div class="bio-copy" appReveal>
-          <p>{{ t().para1 }}</p>
-          <p>{{ t().para2 }}</p>
+          <p>{{ t('about.para1') }}</p>
+          <p>{{ t('about.para2') }}</p>
           <p>
-            <a class="btn-ghost" [href]="profile().cvUrl" rel="noopener">{{ t().cvLabel }}</a>
+            <a class="btn-ghost" [href]="profile().cvUrl" rel="noopener">{{ t('about.cvLabel') }}</a>
           </p>
         </div>
         <div class="bio-portrait" appReveal>
@@ -39,36 +40,36 @@ const siteUrl = environment.siteUrl;
       </div>
 
       <section class="education" aria-labelledby="education-title">
-        <app-section-header [eyebrow]="t().educationEyebrow" [title]="t().educationTitle" />
-        <h2 id="education-title" class="visually-hidden">{{ t().educationTitle }}</h2>
+        <app-section-header [eyebrow]="t('about.educationEyebrow')" [title]="t('about.educationTitle')" />
+        <h2 id="education-title" class="visually-hidden">{{ t('about.educationTitle') }}</h2>
         <ol class="timeline">
           <li appReveal>
-            <h3>{{ t().diploma1Title }}</h3>
-            <p class="timeline-meta">{{ t().diploma1Meta }}</p>
-            <p>{{ t().diploma1Body }}</p>
+            <h3>{{ t('about.diploma1Title') }}</h3>
+            <p class="timeline-meta">{{ t('about.diploma1Meta') }}</p>
+            <p>{{ t('about.diploma1Body') }}</p>
           </li>
           <li appReveal [appRevealDelay]="80">
-            <h3>{{ t().diploma2Title }}</h3>
-            <p class="timeline-meta">{{ t().diploma2Meta }}</p>
-            <p>{{ t().diploma2Body }}</p>
+            <h3>{{ t('about.diploma2Title') }}</h3>
+            <p class="timeline-meta">{{ t('about.diploma2Meta') }}</p>
+            <p>{{ t('about.diploma2Body') }}</p>
           </li>
         </ol>
       </section>
 
       <section class="krakow" aria-labelledby="krakow-title">
         <app-section-header
-          [eyebrow]="t().krakowEyebrow"
-          [title]="t().krakowTitle"
-          [lead]="t().krakowBody"
+          [eyebrow]="t('about.krakowEyebrow')"
+          [title]="t('about.krakowTitle')"
+          [lead]="t('about.krakowBody')"
         />
-        <h2 id="krakow-title" class="visually-hidden">{{ t().krakowTitle }}</h2>
+        <h2 id="krakow-title" class="visually-hidden">{{ t('about.krakowTitle') }}</h2>
       </section>
 
       <app-cta-block
-        [title]="t().ctaTitle"
-        [text]="t().ctaBody"
+        [title]="t('about.ctaTitle')"
+        [text]="t('about.ctaBody')"
         [primary]="{ label: profile().email, href: mailtoHref() }"
-        [secondary]="{ label: t().ctaSecondary, href: contactUrl() }"
+        [secondary]="{ label: t('about.ctaSecondary'), href: contactUrl() }"
       />
     </main>
   `,
@@ -159,10 +160,12 @@ export class AboutPage implements OnInit {
   private readonly store = inject(PortfolioService);
   private readonly languages = inject(LanguageService);
   private readonly seo = inject(SeoService);
+  private readonly translations = inject(TranslateService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present (see HomePage note on `AsyncData`). */
-  protected readonly t = computed(() => this.store.uiCopy().data!.about);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+      this.translations.instant(key, params);  
   protected readonly profile = computed(() => this.store.profile().data!);
   protected readonly portraitAlt = computed(() =>
     textIn(this.effLang(), this.profile().portraitAlt),

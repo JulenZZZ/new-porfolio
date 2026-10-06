@@ -17,6 +17,7 @@ import { environment } from '../../../environments/environment';
 import { CtaBlock } from '../../shared/cta-block';
 import { PlaceholderArt } from '../../shared/placeholder-art';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -31,7 +32,7 @@ const siteUrl = environment.siteUrl;
     <main class="detail">
       @if (project(); as p) {
         <p class="back" appReveal>
-          <a [href]="portfolioUrl()">{{ t().back }}</a>
+          <a [href]="portfolioUrl()">{{ t('project.back') }}</a>
         </p>
         <header class="masthead" appReveal>
           <p class="eyebrow">{{ yearRole(p.year, roleText()) }}</p>
@@ -40,7 +41,7 @@ const siteUrl = environment.siteUrl;
         </header>
 
         <section class="tech" aria-labelledby="tech-title" appReveal>
-          <h2 id="tech-title">{{ t().techTitle }}</h2>
+          <h2 id="tech-title">{{ t('project.techTitle') }}</h2>
           <ul>
             @for (tech of p.tech; track tech) {
               <li>{{ tech }}</li>
@@ -54,8 +55,8 @@ const siteUrl = environment.siteUrl;
         </section>
 
         <section class="gallery-wrap" aria-labelledby="gallery-title" appReveal>
-          <h2 id="gallery-title">{{ t().galleryTitle }}</h2>
-          <p class="hint">{{ t().galleryHint }}</p>
+          <h2 id="gallery-title">{{ t('project.galleryTitle') }}</h2>
+          <p class="hint">{{ t('project.galleryHint') }}</p>
           <div
             class="gallery"
             role="region"
@@ -78,11 +79,11 @@ const siteUrl = environment.siteUrl;
           </div>
           @if (p.images.length > 1) {
             <p class="gallery-nav">
-              <button type="button" (click)="stepImage(-1)" [attr.aria-label]="t().prevImage">
+              <button type="button" (click)="stepImage(-1)" [attr.aria-label]="t('project.prevImage')">
                 ←
               </button>
               <span aria-live="polite">{{ activeImage() + 1 }} / {{ p.images.length }}</span>
-              <button type="button" (click)="stepImage(1)" [attr.aria-label]="t().nextImage">
+              <button type="button" (click)="stepImage(1)" [attr.aria-label]="t('project.nextImage')">
                 →
               </button>
             </p>
@@ -92,30 +93,30 @@ const siteUrl = environment.siteUrl;
         <nav class="neighbors" aria-label="Projects">
           @if (neighbors().prev; as prev) {
             <a class="neighbor" [href]="projectHref(prev.slug)">
-              <span>{{ t().prevProject }}</span>
+              <span>{{ t('project.prevProject') }}</span>
               <strong>{{ prev.title }}</strong>
             </a>
           }
           @if (neighbors().next; as next) {
             <a class="neighbor" [href]="projectHref(next.slug)">
-              <span>{{ t().nextProject }}</span>
+              <span>{{ t('project.nextProject') }}</span>
               <strong>{{ next.title }}</strong>
             </a>
           }
         </nav>
 
         <app-cta-block
-          [title]="t().contactTitle"
-          [text]="t().contactBody"
-          [primary]="{ label: t().contactCta, href: contactUrl() }"
+          [title]="t('project.contactTitle')"
+          [text]="t('project.contactBody')"
+          [primary]="{ label: t('project.contactCta'), href: contactUrl() }"
         />
       } @else {
         <div class="not-found" appReveal>
-          <p class="eyebrow">{{ t().notFoundEyebrow }}</p>
-          <h1>{{ t().notFoundTitle }}</h1>
-          <p>{{ t().notFoundBody }}</p>
+          <p class="eyebrow">{{ t('project.notFoundEyebrow') }}</p>
+          <h1>{{ t('project.notFoundTitle') }}</h1>
+          <p>{{ t('project.notFoundBody') }}</p>
           <p>
-            <a class="btn-ghost" [href]="portfolioUrl()">{{ t().back }}</a>
+            <a class="btn-ghost" [href]="portfolioUrl()">{{ t('project.back') }}</a>
           </p>
         </div>
       }
@@ -270,10 +271,12 @@ export class ProjectDetailPage {
   private readonly languages = inject(LanguageService);
   private readonly seo = inject(SeoService);
   private readonly params = toSignal(inject(ActivatedRoute).paramMap);
+  private readonly translations = inject(TranslateService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present (see HomePage note on `AsyncData`). */
-  protected readonly t = computed(() => this.store.uiCopy().data!.project);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+      this.translations.instant(key, params);  
   protected readonly slug = computed(() => this.params()?.get('slug') ?? '');
   protected readonly project = computed(() => this.store.projectBySlug(this.slug())().data);
   protected readonly neighbors = computed(() => this.store.neighborsOf(this.slug()));

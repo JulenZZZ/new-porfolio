@@ -13,6 +13,7 @@ import { textIn } from '../../models/lang';
 import { pageUrl } from '../../i18n/routes.i18n';
 import { environment } from '../../../environments/environment';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
@@ -27,26 +28,26 @@ const siteUrl = environment.siteUrl;
   template: `
     <main class="contact">
       <header class="page-head" appReveal>
-        <p class="eyebrow">{{ t().eyebrow }}</p>
-        <h1>{{ t().title }}</h1>
-        <p class="lead">{{ t().lead }}</p>
+        <p class="eyebrow">{{ t('contact.eyebrow') }}</p>
+        <h1>{{ t('contact.title') }}</h1>
+        <p class="lead">{{ t('contact.lead') }}</p>
       </header>
 
       <section class="mail-cta" aria-label="Email" appReveal>
         <a class="big-mail" [href]="mailtoHref()">{{ contact().email }}</a>
         <p class="mail-actions">
-          <a class="btn-primary" [href]="mailtoHref()">{{ t().writeToMe }}</a>
-          <button type="button" class="btn-ghost" (click)="copyEmail()">{{ t().copyEmail }}</button>
+          <a class="btn-primary" [href]="mailtoHref()">{{ t('contact.writeToMe') }}</a>
+          <button type="button" class="btn-ghost" (click)="copyEmail()">{{ t('contact.copyEmail') }}</button>
         </p>
         <p class="copied" aria-live="polite">
           @if (copied()) {
-            {{ t().copied }}
+            {{ t('contact.copied') }}
           }
         </p>
       </section>
 
       <section class="connect" aria-labelledby="connect-title" appReveal>
-        <h2 id="connect-title">{{ t().connectTitle }}</h2>
+        <h2 id="connect-title">{{ t('contact.connectTitle') }}</h2>
         <ul class="social-cards">
           @for (s of socialCards(); track s.kind) {
             <li>
@@ -60,10 +61,10 @@ const siteUrl = environment.siteUrl;
       </section>
 
       <section class="meta" appReveal>
-        <h2>{{ t().availabilityLabel }}</h2>
+        <h2>{{ t('contact.availabilityLabel') }}</h2>
         <p>{{ availability() }}</p>
         <p>
-          <a class="btn-ghost" [href]="contact().cvUrl" rel="noopener">{{ t().cvLabel }}</a>
+          <a class="btn-ghost" [href]="contact().cvUrl" rel="noopener">{{ t('contact.cvLabel') }}</a>
         </p>
       </section>
     </main>
@@ -195,10 +196,12 @@ export class ContactPage implements OnInit {
   private readonly store = inject(PortfolioService);
   private readonly languages = inject(LanguageService);
   private readonly seo = inject(SeoService);
+  private readonly translations = inject(TranslateService);
 
   protected readonly effLang = this.languages.currentLang;
   /** Static v1 data is always present (see HomePage note on `AsyncData`). */
-  protected readonly t = computed(() => this.store.uiCopy().data!.contact);
+  protected readonly t = (key: string, params?: Record<string, any>) =>
+      this.translations.instant(key, params);
   protected readonly contact = computed(() => this.store.contact().data!);
   /** Email already has its dedicated CTA above — cards show external profiles. */
   protected readonly socialCards = computed(() =>
@@ -208,7 +211,7 @@ export class ContactPage implements OnInit {
     textIn(this.effLang(), this.contact().availability),
   );
   protected readonly mailtoHref = computed(
-    () => `mailto:${this.contact().email}?subject=${encodeURIComponent(this.t().mailSubject)}`,
+    () => `mailto:${this.contact().email}?subject=${encodeURIComponent(this.t('contact.mailSubject'))}`,
   );
   protected readonly copied = signal(false);
 
