@@ -15,6 +15,7 @@ import { LanguageService } from '../core/language.service';
 import { PortfolioService } from '../services/portfolio.service';
 import { LanguageSwitcher } from './language-switcher';
 import { MobileMenu } from './mobile-menu';
+import { ThemeService } from '../core/theme.service';
 
 /** Site header: wordmark, desktop nav, LanguageSwitcher, burger → MobileMenu. */
 @Component({
@@ -39,6 +40,26 @@ import { MobileMenu } from './mobile-menu';
               {{ label(item) }}
             </a>
           }
+          <!-- Botón con Icono de Modo Oscuro/Claro -->
+        <button 
+          type="button" 
+          class="icon-btn" 
+          (click)="themeService.toggleTheme()" 
+          [attr.aria-label]="themeService.currentTheme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+        >
+          @if (themeService.currentTheme() === 'dark') {
+            <!-- Icono Sol (Sun SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          } @else {
+            <!-- Icono Luna (Moon SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          }
+        </button>
         </nav>
         <div class="site-header__tools">
           <app-language-switcher class="site-header__lang" />
@@ -62,6 +83,28 @@ import { MobileMenu } from './mobile-menu';
     <app-mobile-menu [open]="menuOpen()" (closed)="menuOpen.set(false)" />
   `,
   styles: `
+      .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);      /* Borde adaptable en light/dark */
+      background: var(--surface);         /* Fondo sólido para que no se transparente */
+      color: var(--ink);
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--accent-teal, #1d809f);
+      outline-offset: 2px;
+    }
     .site-header {
       position: sticky;
       top: 0;
@@ -230,6 +273,7 @@ import { MobileMenu } from './mobile-menu';
 export class SiteHeader {
   private readonly languages = inject(LanguageService);
   private readonly store = inject(PortfolioService);
+  readonly themeService = inject(ThemeService);
 
   readonly menuOpen = signal(false);
   readonly scrolled = signal(false);

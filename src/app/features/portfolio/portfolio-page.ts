@@ -108,8 +108,9 @@ const siteUrl = environment.siteUrl;
         min-width: 44px;
         padding: 0.5rem 1rem;
         border-radius: 999px;
-        border: 1px solid var(--line, rgba(22, 26, 29, 0.1));
-        background: transparent;
+        border: 1px solid var(--line);      /* Borde que se adapta al tema */
+        background: var(--surface);         /* Fondo sólido (#ffffff en light, #21262d en dark) */
+        color: var(--ink);
         cursor: pointer;
         font: inherit;
         transition: background 200ms var(--ease-out, ease-out);

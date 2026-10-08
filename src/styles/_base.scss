@@ -222,6 +222,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
   min-height: 100dvh;
+  transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
 
 h1,

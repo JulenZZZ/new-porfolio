@@ -52,7 +52,7 @@
 .btn-primary {
   background: var(--ember);
   border-color: var(--ember);
-  color: #fff;
+  color: #ffffff;
 
   &:hover {
     background: var(--teal-deep);
@@ -62,13 +62,14 @@
 }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--surface);
   border-color: var(--line);
   color: var(--ink);
 
   &:hover {
     border-color: var(--teal);
     color: var(--teal-deep);
+    background: var(--surface);
   }
 }
 

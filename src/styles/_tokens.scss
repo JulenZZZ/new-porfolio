@@ -2,7 +2,8 @@
    No hardcoded color / spacing / type / radius / shadow / motion values
    in components: every value below is consumed via var(--*). */
 
-:root {
+:root,
+[data-theme="light"] {
   /* 6.2 Colors (light-first, teal-anchored) */
   --bg: #fafaf7; /* warm paper page background */
   --surface: #ffffff; /* cards, menu overlay */
@@ -88,6 +89,21 @@
   --header-height: 68px;
   --z-header: 50;
   --z-menu: 100;
+}
+
+/* ==========================================================================
+   Dark Theme Tokens Overrides
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg: #0d1117;              /* Fondo base oscuro */
+  --surface: #21262d;         /* Gris más claro para destacar botones y tarjetas del fondo */
+  --ink: #f0f6fc;             /* Texto e iconos principales */
+  --muted: #8b949e;           /* Texto secundario */
+  --line: rgba(240, 246, 252, 0.2); /* Borde sutil pero visible */
+  --teal: #38b6ff;
+  --teal-deep: #58c4dc;
+  --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --focus-ring: 2px solid var(--teal-deep);
 }
 
 /* SCSS-only helpers — mixins, never values. */
