@@ -35,7 +35,7 @@ const siteUrl = environment.siteUrl;
           </p>
         </div>
         <div class="bio-portrait" appReveal>
-          <app-placeholder-art [alt]="portraitAlt()" monogram="JZ" ratio="4 / 5" />
+          <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" monogram="JZ" ratio="4 / 5" />
         </div>
       </div>
 

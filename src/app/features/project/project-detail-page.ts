@@ -72,7 +72,7 @@ const siteUrl = environment.siteUrl;
                   [class.active]="i === activeImage()"
                   [attr.aria-hidden]="i !== activeImage()"
                 >
-                  <app-placeholder-art [alt]="imgAlt(i)" monogram="JZ" ratio="16 / 10" />
+                  <app-placeholder-art [src]="img.src" [alt]="imgAlt(i)" monogram="JZ" ratio="16 / 10" />
                 </figure>
               }
             </div>

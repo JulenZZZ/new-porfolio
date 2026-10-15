@@ -44,9 +44,9 @@ const siteUrl = environment.siteUrl;
             <a class="btn-ghost" [href]="contactUrl()">{{ t('home.getInTouch') }}</a>
           </p>
         </div>
-        <div class="hero-portrait" appReveal>
-          <app-placeholder-art [alt]="portraitAlt()" monogram="JZ" ratio="4 / 5" />
-        </div>
+       <!-- <div class="hero-portrait" appReveal>
+          <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" monogram="JZ" ratio="4 / 5" />
+        </div>-->
       </section>
 
       <section class="about-teaser" aria-labelledby="about-teaser-title">
@@ -82,7 +82,7 @@ const siteUrl = environment.siteUrl;
           [projects]="featured()"
           [lang]="effLang()"
           [hrefPrefix]="portfolioUrl()"
-          [cols3]="true"
+          [priority]="true"
         />
         <p class="view-all">
           <a class="btn-ghost" [href]="portfolioUrl()">{{ t('home.viewAll') }}</a>

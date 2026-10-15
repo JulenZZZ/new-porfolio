@@ -22,14 +22,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Angular Material', 'ASP.NET', 'SQL Server'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'assets/img/todo.png',
+    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/todo.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNTAwODkzLCJpYXQiOjE3OTIwODkzMDIyMjJ9.5-aCgnnAfy0ePLzgVquWJRAnJz6spY1d3CiSC_DIBTk&vercel-blob-signature=j345pWwzqpOcDLZa5_BIkrKBDEr9EBvCP0qNWmLmZIA',
     thumbnailAlt: {
       pl: 'Zrzut ekranu aplikacji To-Do List',
       en: 'Screenshot of the To-Do List app',
     },
     images: [
       {
-        src: 'assets/img/todo.png',
+        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/todo.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNTAwODkzLCJpYXQiOjE3OTIwODkzMDIyMjJ9.5-aCgnnAfy0ePLzgVquWJRAnJz6spY1d3CiSC_DIBTk&vercel-blob-signature=j345pWwzqpOcDLZa5_BIkrKBDEr9EBvCP0qNWmLmZIA',
         alt: {
           pl: 'Zrzut ekranu aplikacji To-Do List',
           en: 'Screenshot of the To-Do List app',
@@ -53,14 +53,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Tailwind CSS', 'ASP.NET', 'SCSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'assets/img/mena.png',
+    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/mena.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNjIwMzY5LCJpYXQiOjE3OTIwODk0MjE5NzV9.f0rrrBxCoZX1Nz0sGF5Oz55eFtAJ05KIo08YHhptpfA&vercel-blob-signature=oT1Rgm7fEZXQ03dQm2E6C4Q3uH-dWoLfyBQCQFgZSYs',
     thumbnailAlt: {
       pl: 'Zrzut ekranu strony choreografa',
       en: 'Screenshot of the choreographer website',
     },
     images: [
       {
-        src: 'assets/img/mena.png',
+        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/mena.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNjIwMzY5LCJpYXQiOjE3OTIwODk0MjE5NzV9.f0rrrBxCoZX1Nz0sGF5Oz55eFtAJ05KIo08YHhptpfA&vercel-blob-signature=oT1Rgm7fEZXQ03dQm2E6C4Q3uH-dWoLfyBQCQFgZSYs',
         alt: {
           pl: 'Zrzut ekranu strony choreografa',
           en: 'Screenshot of the choreographer website',
@@ -71,30 +71,30 @@ export const projectsEn: Project[] = [
     featured: true,
   },
   {
-    slug: 'car-store',
-    title: 'Car Store',
+    slug: 'medical-app',
+    title: 'Medical Appointment APP',
     tagline: {
-      pl: 'Prosty w zarządzaniu sklep motoryzacyjny.',
-      en: 'Simple to manage car store.',
+      pl: 'Prosty w zarządzaniu aplikacja medyczna.',
+      en: 'Simple medical appointment app.',
     },
     description: {
-      pl: 'Prosta aplikacja sklepu motoryzacyjnego, łatwa w zarządzaniu.\n\nZbudowana w Angularze, JavaScripcie, HTML i CSS.',
-      en: 'A simple car store web application that is easy to manage.\n\nBuilt with Angular, JavaScript, HTML and CSS.',
+      pl: 'Prosta aplikacja medyczna, łatwa w zarządzaniu.\n\nZbudowana w Angularze, JavaScripcie, HTML i CSS.',
+      en: 'A simple medical appointment app that is easy to manage.\n\nBuilt with Angular, JavaScript, HTML and CSS.',
     },
     tech: ['Angular', 'JavaScript', 'HTML', 'CSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'assets/img/carshop.jpg',
+    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/medical.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMzODA4MzI3LCJpYXQiOjE3OTIwOTA2MDk1NTV9.2yHehLUpHn0_KSxVsLOwnzh-pJavFrXOVuMSQF7y3OA&vercel-blob-signature=mjJQZ45wWPjNWXMY0LBlbgRnmo9QDNDMa3fEuBiLlqU',
     thumbnailAlt: {
-      pl: 'Zrzut ekranu sklepu motoryzacyjnego',
-      en: 'Screenshot of the car store',
+      pl: 'Zrzut ekranu aplikacji medycznej',
+      en: 'Screenshot of the medical app',
     },
     images: [
       {
-        src: 'assets/img/carshop.jpg',
+        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/medical.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMzODA4MzI3LCJpYXQiOjE3OTIwOTA2MDk1NTV9.2yHehLUpHn0_KSxVsLOwnzh-pJavFrXOVuMSQF7y3OA&vercel-blob-signature=mjJQZ45wWPjNWXMY0LBlbgRnmo9QDNDMa3fEuBiLlqU',
         alt: {
-          pl: 'Zrzut ekranu sklepu motoryzacyjnego',
-          en: 'Screenshot of the car store',
+          pl: 'Zrzut ekranu aplikacji medycznej',
+          en: 'Screenshot of the medical app',
         },
       },
     ],
