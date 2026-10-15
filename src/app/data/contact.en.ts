@@ -20,5 +20,5 @@ export const contactEn: Contact = {
     pl: 'Mieszkam w Krakowie i jestem otwarty na nowe możliwości. Najszybciej skontaktujesz się ze mną mailowo.',
     en: 'Currently based in Kraków and open to new opportunities. The fastest way to reach me is by email.',
   },
-  cvUrl: 'https://drive.google.com/file/d/1NzZdmY3Qb04ugsztyNyXGi2XkiHPax7l/view?usp=sharing',
+  cvUrl: 'https://drive.google.com/file/d/1TCCniR-EGrRpDTR-tABxyORw6mipbi5f/view?usp=sharing',
 };
