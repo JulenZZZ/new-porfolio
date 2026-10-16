@@ -22,14 +22,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Angular Material', 'ASP.NET', 'SQL Server'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/todo.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNTAwODkzLCJpYXQiOjE3OTIwODkzMDIyMjJ9.5-aCgnnAfy0ePLzgVquWJRAnJz6spY1d3CiSC_DIBTk&vercel-blob-signature=j345pWwzqpOcDLZa5_BIkrKBDEr9EBvCP0qNWmLmZIA',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.png',
     thumbnailAlt: {
       pl: 'Zrzut ekranu aplikacji To-Do List',
       en: 'Screenshot of the To-Do List app',
     },
     images: [
       {
-        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/todo.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNTAwODkzLCJpYXQiOjE3OTIwODkzMDIyMjJ9.5-aCgnnAfy0ePLzgVquWJRAnJz6spY1d3CiSC_DIBTk&vercel-blob-signature=j345pWwzqpOcDLZa5_BIkrKBDEr9EBvCP0qNWmLmZIA',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.png',
         alt: {
           pl: 'Zrzut ekranu aplikacji To-Do List',
           en: 'Screenshot of the To-Do List app',
@@ -53,14 +53,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Tailwind CSS', 'ASP.NET', 'SCSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/mena.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNjIwMzY5LCJpYXQiOjE3OTIwODk0MjE5NzV9.f0rrrBxCoZX1Nz0sGF5Oz55eFtAJ05KIo08YHhptpfA&vercel-blob-signature=oT1Rgm7fEZXQ03dQm2E6C4Q3uH-dWoLfyBQCQFgZSYs',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.png',
     thumbnailAlt: {
       pl: 'Zrzut ekranu strony choreografa',
       en: 'Screenshot of the choreographer website',
     },
     images: [
       {
-        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/mena.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMyNjIwMzY5LCJpYXQiOjE3OTIwODk0MjE5NzV9.f0rrrBxCoZX1Nz0sGF5Oz55eFtAJ05KIo08YHhptpfA&vercel-blob-signature=oT1Rgm7fEZXQ03dQm2E6C4Q3uH-dWoLfyBQCQFgZSYs',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.png',
         alt: {
           pl: 'Zrzut ekranu strony choreografa',
           en: 'Screenshot of the choreographer website',
@@ -84,14 +84,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'JavaScript', 'HTML', 'CSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/medical.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMzODA4MzI3LCJpYXQiOjE3OTIwOTA2MDk1NTV9.2yHehLUpHn0_KSxVsLOwnzh-pJavFrXOVuMSQF7y3OA&vercel-blob-signature=mjJQZ45wWPjNWXMY0LBlbgRnmo9QDNDMa3fEuBiLlqU',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.png',
     thumbnailAlt: {
       pl: 'Zrzut ekranu aplikacji medycznej',
       en: 'Screenshot of the medical app',
     },
     images: [
       {
-        src: 'https://vqdafevef2xzzpen.private.blob.vercel-storage.com/medical.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfdlFkYWZFVmVGMnh6elBFbiIsIm93bmVySWQiOiJ0ZWFtXzZlUDZ5TlZQUUVPWWNtZnI4cGFQbURUYyIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzkyMTMzODA4MzI3LCJpYXQiOjE3OTIwOTA2MDk1NTV9.2yHehLUpHn0_KSxVsLOwnzh-pJavFrXOVuMSQF7y3OA&vercel-blob-signature=mjJQZ45wWPjNWXMY0LBlbgRnmo9QDNDMa3fEuBiLlqU',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.png',
         alt: {
           pl: 'Zrzut ekranu aplikacji medycznej',
           en: 'Screenshot of the medical app',
