@@ -53,14 +53,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Tailwind CSS', 'ASP.NET', 'SCSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.png',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.webp',
     thumbnailAlt: {
       pl: 'Zrzut ekranu strony choreografa',
       en: 'Screenshot of the choreographer website',
     },
     images: [
       {
-        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.png',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/mena.webp',
         alt: {
           pl: 'Zrzut ekranu strony choreografa',
           en: 'Screenshot of the choreographer website',
