@@ -10,14 +10,14 @@ export class ThemeService {
   readonly currentTheme = signal<Theme>(this.getInitialTheme());
 
   constructor() {
-    // Sincronizar el atributo 'data-theme' en el documento cada vez que cambie el Signal
-    effect(() => {
-      const theme = this.currentTheme();
-      if (isPlatformBrowser(this.platformId)) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('user-theme', theme);
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      // Un solo effect limpio que reacciona a los cambios de la Signal
+      effect(() => {
+        const current = this.currentTheme();
+        document.documentElement.setAttribute('data-theme', current);
+        localStorage.setItem('theme', current);
+      });
+    }
   }
 
   toggleTheme(): void {
@@ -27,12 +27,11 @@ export class ThemeService {
   private getInitialTheme(): Theme {
     if (!isPlatformBrowser(this.platformId)) return 'light';
 
-    const saved = localStorage.getItem('user-theme') as Theme;
+    const saved = localStorage.getItem('theme') as Theme | null;
     if (saved === 'light' || saved === 'dark') {
       return saved;
     }
 
-    // Preferencia del sistema operativo
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 }
