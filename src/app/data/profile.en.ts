@@ -20,7 +20,7 @@ export const profileEn: Profile = {
     pl: 'Portret Julena Zulaiki',
     en: 'Portrait of Julen Zulaika',
   },
-  cvUrl: 'https://drive.google.com/file/d/1NzZdmY3Qb04ugsztyNyXGi2XkiHPax7l/view?usp=sharing',
+  cvUrl: 'https://drive.google.com/file/d/1TCCniR-EGrRpDTR-tABxyORw6mipbi5f/view?usp=sharing',
   email: 'julenz485@gmail.com',
   socials: [
     {

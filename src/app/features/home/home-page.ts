@@ -44,9 +44,18 @@ const siteUrl = environment.siteUrl;
             <a class="btn-ghost" [href]="contactUrl()">{{ t('home.getInTouch') }}</a>
           </p>
         </div>
-       <!-- <div class="hero-portrait" appReveal>
-          <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" monogram="JZ" ratio="4 / 5" />
-        </div>-->
+       <div class="hero-portrait" appReveal style="aspect-ratio: 4 / 5; width: 100%;">
+          <!-- Mientras no haya foto de perfil, renderiza una tarjeta de arte técnico -->
+          @if (profile().portrait) {
+            <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" ratio="4 / 5" />
+          } @else {
+            <div class="hero-tech-card">
+              <div class="code-badge"><&lt;JZ /&gt;/></div>
+              <div class="glow-orb"></div>
+              <p class="tech-subtext">Full-Stack Architecture</p>
+            </div>
+          }
+</div>
       </section>
 
       <section class="about-teaser" aria-labelledby="about-teaser-title">
@@ -182,6 +191,51 @@ const siteUrl = environment.siteUrl;
       @media (min-width: 1024px) {
         .skill-groups {
           grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .hero-tech-card {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius-card, 12px);
+        background: radial-gradient(circle at 50% 30%, #1d809f 0%, #0d1117 70%);
+        border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+        .code-badge {
+          font-family: var(--font-mono, monospace);
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: -0.05em;
+          z-index: 2;
+          text-shadow: 0 0 20px rgba(225, 101, 65, 0.5);
+        }
+
+        .tech-subtext {
+          font-family: var(--font-mono, monospace);
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--teal-deep, #1d809f);
+          margin-top: 1rem;
+          z-index: 2;
+        }
+
+        .glow-orb {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          background: #e16541;
+          filter: blur(80px);
+          border-radius: 50%;
+          opacity: 0.4;
         }
       }
       .skill-group h3 {

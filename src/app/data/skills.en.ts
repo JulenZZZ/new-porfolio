@@ -13,10 +13,10 @@ export const skillsEn: Skill[] = [
   { id: 'angular', name: 'Angular', category: 'framework' },
   { id: 'typescript', name: 'TypeScript', category: 'frontend' },
   { id: 'angular-material', name: 'Angular Material', category: 'framework' },
-  { id: 'php', name: 'PHP', category: 'backend' },
+  { id: 'asp.net', name: 'ASP.NET', category: 'backend' },
   { id: 'python', name: 'Python', category: 'backend' },
   { id: 'tailwind-css', name: 'Tailwind CSS', category: 'styling' },
   { id: 'sass', name: 'Sass', category: 'styling' },
   { id: 'git', name: 'Git', category: 'tooling' },
-  { id: 'sql', name: 'SQL', category: 'database' },
+  { id: 'sql-server', name: 'SQL Server', category: 'database' },
 ];
