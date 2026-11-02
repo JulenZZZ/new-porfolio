@@ -166,7 +166,10 @@ const siteUrl = environment.siteUrl;
         gap: 0.75rem;
       }
       .hero-portrait {
+        width: 100%;
         max-width: 26rem;
+        aspect-ratio: 4 / 5; /* Asegura la caja en el SSR */
+        contain: layout intrinsic-size;
       }
       .hero-portrait.parallax {
         will-change: transform;
@@ -195,8 +198,7 @@ const siteUrl = environment.siteUrl;
       }
       .hero-tech-card {
         width: 100%;
-        height: 100%;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 5; /* Proporción limpia idéntica al contenedor */
         border-radius: var(--radius-card, 12px);
         background: radial-gradient(circle at 50% 30%, #1d809f 0%, #0d1117 70%);
         border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
