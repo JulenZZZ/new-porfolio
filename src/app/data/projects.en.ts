@@ -22,14 +22,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'Angular Material', 'ASP.NET', 'SQL Server'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.png',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.webp',
     thumbnailAlt: {
       pl: 'Zrzut ekranu aplikacji To-Do List',
       en: 'Screenshot of the To-Do List app',
     },
     images: [
       {
-        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.png',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/todo.webp',
         alt: {
           pl: 'Zrzut ekranu aplikacji To-Do List',
           en: 'Screenshot of the To-Do List app',
@@ -84,14 +84,14 @@ export const projectsEn: Project[] = [
     tech: ['Angular', 'JavaScript', 'HTML', 'CSS'],
     year: 2024,
     role: { pl: 'Programista full-stack', en: 'Full-stack developer' },
-    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.png',
+    thumbnail: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.webp',
     thumbnailAlt: {
       pl: 'Zrzut ekranu aplikacji medycznej',
       en: 'Screenshot of the medical app',
     },
     images: [
       {
-        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.png',
+        src: 'https://ga26ooe7xfe4jqt7.public.blob.vercel-storage.com/medical.webp',
         alt: {
           pl: 'Zrzut ekranu aplikacji medycznej',
           en: 'Screenshot of the medical app',
