@@ -35,7 +35,15 @@ const siteUrl = environment.siteUrl;
           </p>
         </div>
         <div class="bio-portrait" appReveal>
-          <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" monogram="JZ" ratio="4 / 5" />
+          @if (profile().portrait) {
+            <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" ratio="4 / 5" />
+          } @else {
+            <div class="hero-tech-card">
+              <div class="code-badge">&lt;JZ/&gt;</div>
+              <div class="glow-orb"></div>
+              <p class="tech-subtext">Full-Stack Architecture</p>
+            </div>
+          }
         </div>
       </div>
 
@@ -144,6 +152,51 @@ const siteUrl = environment.siteUrl;
         height: 1px;
         overflow: hidden;
         clip: rect(0 0 0 0);
+      }
+      .hero-tech-card {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius-card, 12px);
+        background: radial-gradient(circle at 50% 30%, #1d809f 0%, #0d1117 70%);
+        border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+        .code-badge {
+          font-family: var(--font-mono, monospace);
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: -0.05em;
+          z-index: 2;
+          text-shadow: 0 0 20px rgba(225, 101, 65, 0.5);
+        }
+
+        .tech-subtext {
+          font-family: var(--font-mono, monospace);
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--teal-deep, #1d809f);
+          margin-top: 1rem;
+          z-index: 2;
+        }
+
+        .glow-orb {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          background: #e16541;
+          filter: blur(80px);
+          border-radius: 50%;
+          opacity: 0.4;
+        }
       }
       @media (prefers-reduced-motion: reduce) {
         *,

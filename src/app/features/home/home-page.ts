@@ -50,12 +50,12 @@ const siteUrl = environment.siteUrl;
             <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" ratio="4 / 5" />
           } @else {
             <div class="hero-tech-card">
-              <div class="code-badge"><&lt;JZ /&gt;/></div>
+              <div class="code-badge">&lt;JZ/&gt;</div>
               <div class="glow-orb"></div>
               <p class="tech-subtext">Full-Stack Architecture</p>
             </div>
           }
-</div>
+        </div>
       </section>
 
       <section class="about-teaser" aria-labelledby="about-teaser-title">
