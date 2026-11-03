@@ -122,7 +122,7 @@ const siteUrl = environment.siteUrl;
         display: grid;
         gap: 2rem;
         grid-template-columns: 1fr;
-        padding: clamp(4.5rem, 9vw, 8.5rem) 0 3rem;
+        padding: clamp(4.5rem, 9vw, 8.5rem) 0 4.5rem;
         min-height: 520px;
       }
       @media (min-width: 1024px) {
@@ -232,6 +232,7 @@ const siteUrl = environment.siteUrl;
           letter-spacing: 0.15em;
           color: var(--teal-deep, #1d809f);
           margin-top: 1rem;
+          margin-bottom: 1.5rem;
           z-index: 2;
         }
 
@@ -292,11 +293,12 @@ const siteUrl = environment.siteUrl;
       .sticky-cta {
         position: sticky;
         bottom: 0;
+        z-index: 40; /* 🟢 Coloca la barra por encima del contenido del Hero (que tiene z-index: 2) */
         display: flex;
         gap: 0.5rem;
         padding: 0.5rem 0.75rem calc(0.5rem + env(safe-area-inset-bottom));
-        background: var(--surface, #fff);
-        border-top: 1px solid var(--line, rgba(22, 26, 29, 0.1));
+        background: var(--bg, #0d1117); /* 🟢 Usa la variable del tema en lugar de #fff para que sea totalmente opaca */
+        border-top: 1px solid var(--line, rgba(255, 255, 255, 0.15));
       }
       .sticky-cta a {
         flex: 1;
