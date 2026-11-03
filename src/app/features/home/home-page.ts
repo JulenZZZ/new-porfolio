@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  NgZone,
   OnInit,
   PLATFORM_ID,
   computed,
@@ -362,6 +363,7 @@ export class HomePage implements OnInit {
   protected readonly aboutUrl = computed(() => pageUrl(this.effLang(), 'about'));
   protected readonly contactUrl = computed(() => pageUrl(this.effLang(), 'contact'));
   protected readonly mailtoHref = computed(() => `mailto:${this.profile().email}`);
+  private readonly ngZone = inject(NgZone);
 
   ngOnInit(): void {
     const lang = this.effLang();
@@ -411,18 +413,20 @@ export class HomePage implements OnInit {
       const rm = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (!mq.matches || rm.matches) return;
     }
-    let ticking = false;
-    const onScroll = (): void => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const el = document.querySelector<HTMLElement>('.hero-portrait');
-        if (el && window.scrollY < window.innerHeight) {
-          el.style.transform = `translateY(${Math.min(window.scrollY * 0.06, 24)}px)`;
-        }
-        ticking = false;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    this.ngZone.runOutsideAngular(() => {
+      let ticking = false;
+      const onScroll = (): void => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const el = document.querySelector<HTMLElement>('.hero-portrait');
+          if (el && window.scrollY < window.innerHeight) {
+            el.style.transform = `translateY(${Math.min(window.scrollY * 0.06, 24)}px)`;
+          }
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
   }
 }
