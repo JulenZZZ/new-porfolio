@@ -143,6 +143,8 @@ const siteUrl = environment.siteUrl;
         line-height: 1.05;
         letter-spacing: -0.03em;
         margin: 0.5rem 0;
+        contain-intrinsic-size: auto 1.05em;
+        min-height: 1.05em;
       }
       /* Gradient name treatment — ONLY used on this page. */
       .name-gradient {
