@@ -4,8 +4,6 @@ Minimalist + elegant personal website for Julen Zulaika, full-stack developer
 (Kraków). Angular 20 standalone + prerendered SSG, Polish + English, deployed as
 static files on Vercel. No backend in v1.
 
-Spec: [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) (24 sections — the
-binding build document).
 
 ## Requirements
 
