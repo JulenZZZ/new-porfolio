@@ -216,29 +216,19 @@
 
 /* src/styles/_base.scss */
 
-html {
-  scroll-behavior: smooth;
-  text-size-adjust: 100%;
-  height: 100%; /* Permite que el porcentaje de altura se propague */
+/* En src/styles/_base.scss */
+
+html, body {
+  height: 100%;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: var(--leading-body);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
-  margin: 0;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
 
-/* El componente raíz de Angular se estira en toda la pantalla */
 app-root {
   display: flex;
   flex-direction: column;
@@ -248,18 +238,18 @@ app-root {
   flex: 1;
 }
 
-/* main absorbe todo el espacio vertical libre empujando el footer al fondo */
 main {
   flex: 1 0 auto;
   width: 100%;
+  /* 🟢 OBLIGA a mantener un bloque mínimo reservado de 800px en el servidor */
+  min-height: calc(100vh - 120px); 
 }
 
-/* El footer se mantiene fijo en la parte inferior desde el primer frame del SSR */
 app-site-footer {
   flex-shrink: 0;
   display: block;
   width: 100%;
-  margin-top: auto; /* Garantiza el anclaje inferior incluso antes de hidratar JS */
+  margin-top: auto;
 }
 
 h1,

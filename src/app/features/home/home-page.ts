@@ -2,7 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  NgZone,
   OnInit,
   PLATFORM_ID,
   computed,
@@ -23,6 +22,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 const siteUrl = environment.siteUrl;
 
+/** Home page (plan section 5.1). 2-col editorial hero with the ONLY gradient
+ *  name treatment on the site; skills strip; 3 featured + view-all. */
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -43,7 +44,8 @@ const siteUrl = environment.siteUrl;
             <a class="btn-ghost" [href]="contactUrl()">{{ t('home.getInTouch') }}</a>
           </p>
         </div>
-        <div class="hero-portrait" appReveal>
+       <div class="hero-portrait">
+          <!-- Mientras no haya foto de perfil, renderiza una tarjeta de arte técnico -->
           @if (profile().portrait) {
             <app-placeholder-art [src]="profile().portrait" [alt]="portraitAlt()" [priority]="true" ratio="4 / 5" />
           } @else {
@@ -140,6 +142,7 @@ const siteUrl = environment.siteUrl;
         letter-spacing: -0.03em;
         margin: 0.5rem 0;
       }
+      /* Gradient name treatment — ONLY used on this page. */
       .name-gradient {
         background: linear-gradient(90deg, #1d809f, #e16541 55%, #ecb807 110%);
         -webkit-background-clip: text;
@@ -165,7 +168,7 @@ const siteUrl = environment.siteUrl;
       .hero-portrait {
         width: 100%;
         max-width: 26rem;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 5; /* Asegura la caja en el SSR */
         contain: layout intrinsic-size;
       }
       .hero-portrait.parallax {
@@ -195,7 +198,7 @@ const siteUrl = environment.siteUrl;
       }
       .hero-tech-card {
         width: 100%;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 5; /* Proporción limpia idéntica al contenedor */
         border-radius: var(--radius-card, 12px);
         background: radial-gradient(circle at 50% 30%, #1d809f 0%, #0d1117 70%);
         border: 1px solid var(--line, rgba(255, 255, 255, 0.15));
@@ -338,11 +341,12 @@ export class HomePage implements OnInit {
   private readonly seo = inject(SeoService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly translations = inject(TranslateService);
-  private readonly ngZone = inject(NgZone);
 
   protected readonly effLang = this.languages.currentLang;
+  /** Static v1 data is always present — the assertion documents the
+   *  `AsyncData` contract the future `ApiProvider` will fill asynchronously. */
   protected readonly t = (key: string, params?: Record<string, any>) =>
-    this.translations.instant(key, params);
+      this.translations.instant(key, params); 
   protected readonly profile = computed(() => this.store.profile().data!);
   protected readonly featured = computed(() => this.store.featured().data ?? []);
   protected readonly skillsGrouped = computed(() => this.store.skillsGrouped().data ?? []);
@@ -393,6 +397,8 @@ export class HomePage implements OnInit {
     this.initParallax();
   }
 
+  /** Subtle parallax: hero portrait only, rAF-throttled, desktop ≥1024px,
+   *  disabled under reduced motion (plan section 15). */
   private initParallax(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     if (typeof window === 'undefined') return;
@@ -401,21 +407,18 @@ export class HomePage implements OnInit {
       const rm = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (!mq.matches || rm.matches) return;
     }
-
-    this.ngZone.runOutsideAngular(() => {
-      let ticking = false;
-      const onScroll = (): void => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const el = document.querySelector<HTMLElement>('.hero-portrait');
-          if (el && window.scrollY < window.innerHeight) {
-            el.style.transform = `translateY(${Math.min(window.scrollY * 0.06, 24)}px)`;
-          }
-          ticking = false;
-        });
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-    });
+    let ticking = false;
+    const onScroll = (): void => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const el = document.querySelector<HTMLElement>('.hero-portrait');
+        if (el && window.scrollY < window.innerHeight) {
+          el.style.transform = `translateY(${Math.min(window.scrollY * 0.06, 24)}px)`;
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 }
