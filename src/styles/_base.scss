@@ -210,23 +210,23 @@
 
 
 html, body {
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: var(--bg);
   color: var(--ink);
-  /* 🟢 Cadena de fallback homogénea */
-  font-family: 'Inter', system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
+  font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
 
-/* 🟢 FORZAR EL LAYOUT RÍGIDO CON MÁXIMA ESPECIFICIDAD */
-html body app-root {
+/* 🟢 Estructura del contenedor principal Angular */
+app-root {
   display: flex !important;
   flex-direction: column !important;
   min-height: 100vh !important;
@@ -234,18 +234,22 @@ html body app-root {
   width: 100% !important;
 }
 
-html body app-root > main,
-html body main#main-content {
-  flex: 1 0 auto !important; /* EMPUJA EL FOOTER AL FONDO DE FORMA OBLIGATORIA */
+/* 🟢 RESERVA DE ALTURA MÍNIMA EN SSR:
+   Garantiza que el espacio del contenido ya exista antes de que Angular inyecte las vistas */
+main,
+#main-content {
+  flex: 1 0 auto !important;
   width: 100% !important;
   display: block !important;
+  min-height: calc(100vh - 140px) !important; /* Reserva la pantalla entera menos header/footer */
 }
 
-html body app-site-footer {
+app-site-footer {
   flex-shrink: 0 !important;
   display: block !important;
   width: 100% !important;
-  margin-top: auto !important; /* ANCLA EL FOOTER EN LA BASE */
+  margin-top: auto !important; /* Mantiene el footer anclado en la base desde el frame 0 */
+  contain: layout;
 }
 
 h1, h2, h3 {
