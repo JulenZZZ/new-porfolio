@@ -94,7 +94,8 @@
 /* ==========================================================================
    Dark Theme Tokens Overrides
    ========================================================================== */
-[data-theme="dark"] {
+[data-theme="dark"],
+[data-theme="dark"] body {
   --bg: #0d1117;              /* Fondo base oscuro */
   --surface: #21262d;         /* Gris más claro para destacar botones y tarjetas del fondo */
   --ink: #f0f6fc;             /* Texto e iconos principales */
