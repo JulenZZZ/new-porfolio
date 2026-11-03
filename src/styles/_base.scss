@@ -232,51 +232,57 @@
 
 /* src/styles/_base.scss */
 
+/* En src/styles/_base.scss */
+
 html, body {
-  height: auto; /* Dejar que la altura crezca de forma natural */
-  min-height: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
 
+/* 🟢 CAMBIO CLAVE: Estructura Grid rígida de 3 filas */
 app-root {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header (auto), Main (espacio sobrante), Footer (auto) */
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
 }
 
-/* El main es el que debe crecer y empujar de forma natural, sin usar min-heights calculados fijos */
 main {
-  flex: 1 0 auto; 
   width: 100%;
+  /* 🟢 OBLIGA a main a ocupar todo el espacio central sin importar lo que tarden las fuentes */
+  min-width: 0; 
 }
 
-/* El footer se mantiene de forma clásica y estática en el flujo */
 app-site-footer {
-  flex-shrink: 0;
   display: block;
   width: 100%;
-  margin-top: auto; /* Empuja al final si el contenido es corto, pero nunca se solapa */
+  /* Al estar en la 3ª fila del Grid (auto), queda bloqueado abajo geométricamente */
 }
 
 h1, h2, h3 {
-  font-family: var(--font-display), 'Fraunces', Georgia, serif !important;
+  font-family: var(--font-display), Georgia, serif;
   font-weight: 500;
-  line-height: var(--leading-heading);
-  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-heading, 1.15);
+  letter-spacing: var(--tracking-tight, -0.03em);
+  text-wrap: balance;
 }
 
 h1 {
   font-size: var(--text-h1);
+  /* 🟢 Congelar la altura de la caja del H1 para que el swap de fuente no altere el alto */
+  line-height: 1.05;
 }
 
 h2 {
