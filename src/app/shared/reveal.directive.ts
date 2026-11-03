@@ -37,11 +37,17 @@ export class RevealDirective {
       el.classList.add('is-revealed');
       return;
     }
+
+    el.classList.add('reveal');
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
+            // Usa requestAnimationFrame para evitar mutar clases en el mismo frame de lectura geométrica
+            requestAnimationFrame(() => {
+              entry.target.classList.add('is-revealed');
+            });
             observer.disconnect();
           }
         }
