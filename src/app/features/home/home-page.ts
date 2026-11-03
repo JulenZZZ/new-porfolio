@@ -122,11 +122,13 @@ const siteUrl = environment.siteUrl;
         gap: 2rem;
         grid-template-columns: 1fr;
         padding: clamp(4.5rem, 9vw, 8.5rem) 0 3rem;
+        min-height: 520px;
       }
       @media (min-width: 1024px) {
         .hero {
           grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
+          min-height: 580px;
         }
       }
       .eyebrow {
