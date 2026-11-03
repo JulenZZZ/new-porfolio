@@ -210,40 +210,39 @@
 
 
 html, body {
-  height: 100%;
-  margin: 0;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: var(--leading-body);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
   transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
 
-/* 🟢 LAYOUT DEFRACTO RÍGIDO (Impide que el footer salte independientemente de la carga de JS) */
-app-root {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* Fila 1: Header | Fila 2: Main | Fila 3: Footer */
-  min-height: 100vh;
-  min-height: 100dvh;
-  width: 100%;
+/* 🟢 FORZAR EL LAYOUT RÍGIDO CON MÁXIMA ESPECIFICIDAD */
+html body app-root {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  width: 100% !important;
 }
 
-main {
-  width: 100%;
-  min-width: 0;
-  display: block;
+html body app-root > main,
+html body main#main-content {
+  flex: 1 0 auto !important; /* EMPUJA EL FOOTER AL FONDO DE FORMA OBLIGATORIA */
+  width: 100% !important;
+  display: block !important;
 }
 
-app-site-footer {
-  display: block;
-  width: 100%;
-  /* Al estar en la 3ª fila del Grid, el SSR lo congela abajo sin importar los re-flujos del contenido */
+html body app-site-footer {
+  flex-shrink: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  margin-top: auto !important; /* ANCLA EL FOOTER EN LA BASE */
 }
 
 h1, h2, h3 {
@@ -255,8 +254,14 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: var(--text-h1);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
   line-height: 1.05;
+  letter-spacing: var(--tracking-tight, -0.03em);
+  text-wrap: balance;
+  /* 🟢 RESERVA RÍGIDA DE LÍNEA: Evita que el cambio de fuente desplace la caja de texto */
+  display: block;
+  min-height: calc(1.05em * 2); /* Reserva espacio para 2 líneas como máximo */
 }
 
 h2 {
