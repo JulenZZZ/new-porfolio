@@ -23,24 +23,28 @@ import { ThemeService } from '../core/theme.service';
   imports: [RouterLink, RouterLinkActive, TranslatePipe, LanguageSwitcher, MobileMenu],
   template: `
     <header class="site-header" [class.site-header--scrolled]="scrolled()">
-      <div class="site-header__inner">
-        <a class="wordmark" [routerLink]="homePath()" [attr.aria-label]="'header.home' | translate">
-          <span class="wordmark__mark" aria-hidden="true">JZ</span>
-          <span class="wordmark__name">Julen Zulaika</span>
-        </a>
-        <nav class="desktop-nav" [attr.aria-label]="'header.home' | translate">
-          @for (item of items(); track item.key) {
-            <a
-              class="desktop-nav__link"
-              [routerLink]="item.path[lang()]"
-              [fragment]="item.fragment"
-              routerLinkActive="desktop-nav__link--active"
-              [routerLinkActiveOptions]="{ exact: item.key !== 'portfolio' }"
-            >
-              {{ label(item) }}
-            </a>
-          }
-          <!-- Botón con Icono de Modo Oscuro/Claro -->
+    <div class="site-header__inner">
+      <a class="wordmark" [routerLink]="homePath()" [attr.aria-label]="'header.home' | translate">
+        <span class="wordmark__mark" aria-hidden="true">JZ</span>
+        <span class="wordmark__name">Julen Zulaika</span>
+      </a>
+
+      <nav class="desktop-nav" [attr.aria-label]="'header.home' | translate">
+        @for (item of items(); track item.key) {
+          <a
+            class="desktop-nav__link"
+            [routerLink]="item.path[lang()]"
+            [fragment]="item.fragment"
+            routerLinkActive="desktop-nav__link--active"
+            [routerLinkActiveOptions]="{ exact: item.key !== 'portfolio' }"
+          >
+            {{ label(item) }}
+          </a>
+        }
+      </nav>
+
+      <div class="site-header__tools">
+        <!-- 🟢 Mover aquí para que sea accesible tanto en móvil como en escritorio -->
         <button 
           type="button" 
           class="icon-btn" 
@@ -60,27 +64,27 @@ import { ThemeService } from '../core/theme.service';
             </svg>
           }
         </button>
-        </nav>
-        <div class="site-header__tools">
-          <app-language-switcher class="site-header__lang" />
-          <button
-            type="button"
-            class="burger"
-            [attr.aria-expanded]="menuOpen()"
-            aria-controls="mobile-menu"
-            [attr.aria-label]="
-              menuOpen() ? ('header.menuClose' | translate) : ('header.menuOpen' | translate)
-            "
-            (click)="menuOpen.set(true)"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
+
+        <app-language-switcher class="site-header__lang" />
+
+        <button
+          type="button"
+          class="burger"
+          [attr.aria-expanded]="menuOpen()"
+          aria-controls="mobile-menu"
+          [attr.aria-label]="
+            menuOpen() ? ('header.menuClose' | translate) : ('header.menuOpen' | translate)
+          "
+          (click)="menuOpen.set(true)"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
-    </header>
-    <app-mobile-menu [open]="menuOpen()" (closed)="menuOpen.set(false)" />
+    </div>
+  </header>
+  <app-mobile-menu [open]="menuOpen()" (closed)="menuOpen.set(false)" />
   `,
   styles: `
       .icon-btn {
